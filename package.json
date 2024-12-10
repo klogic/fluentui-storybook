@@ -11,6 +11,8 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@fluentui/react": "^8.121.13",
+    "@fluentui/react-components": "^9.56.5",
     "next": "14.2.20",
     "react": "^18",
     "react-dom": "^18"
@@ -20,6 +22,7 @@
     "@storybook/addon-essentials": "^8.4.7",
     "@storybook/addon-interactions": "^8.4.7",
     "@storybook/addon-onboarding": "^8.4.7",
+    "@storybook/addon-themes": "^8.4.7",
     "@storybook/blocks": "^8.4.7",
     "@storybook/nextjs": "^8.4.7",
     "@storybook/react": "^8.4.7",
