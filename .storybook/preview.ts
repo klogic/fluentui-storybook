@@ -1,9 +1,12 @@
+import { initializeIcons } from "@fluentui/font-icons-mdl2";
 import { ThemeProvider } from "@fluentui/react";
 import { FluentProvider } from "@fluentui/react-components";
 import { withThemeFromJSXProvider } from "@storybook/addon-themes";
 import type { Preview } from "@storybook/react";
 import { v8Theme, v9DarkTheme, v9LightTheme } from "./theme";
 import "./v8Global.css";
+
+initializeIcons();
 
 const preview: Preview = {
   parameters: {
