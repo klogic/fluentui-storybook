@@ -19,6 +19,7 @@ const meta: Meta = {
 export default meta;
 
 const useStyles = makeStyles({
+  column: { display: "flex", flexDirection: "column" },
   error: {
     color: tokens.colorPaletteRedForeground1,
   },
@@ -43,7 +44,7 @@ export const ComboBox = () => {
         />
       }
       v9Component={
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        <div className={styles.column}>
           <Label size="large" id="customer-number">
             {"Kundennummer"}
           </Label>
