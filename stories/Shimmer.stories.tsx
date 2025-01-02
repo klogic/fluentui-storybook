@@ -35,7 +35,6 @@ export const Shimmer = () => {
       }
       v9Component={
         <Skeleton>
-          {" "}
           <SkeletonItem className={styles.skeleton} />
         </Skeleton>
       }
