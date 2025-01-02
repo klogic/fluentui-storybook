@@ -75,28 +75,28 @@ export const v8Theme: V8PartialTheme = {
 /**
  * Die Brand-Farben wurden mithilfe der folgenden Seite generiert:
  *
- * Key color value: #004E9E (themePrimary)
+ * Key color value: #004E9E (themePrimary), Hue Torsion: -50, Vibrancy: 50
  *
  * {@link https://react.fluentui.dev/?path=/docs/theme-theme-designer Fluent Theme Designer}
  *
  */
 const v9BrandColors: BrandVariants = {
-  10: "#020306",
-  20: "#111727",
-  30: "#152545",
-  40: "#15315F",
-  50: "#113D79",
-  60: "#064A95",
-  70: "#2356A4",
-  80: "#3E63AC",
-  90: "#5371B4",
-  100: "#677FBB",
-  110: "#798DC3",
-  120: "#8B9BCB",
-  130: "#9DAAD3",
-  140: "#AFB8DB",
-  150: "#C0C7E3",
-  160: "#D2D7EB",
+  10: "#030209",
+  20: "#121532",
+  30: "#102256",
+  40: "#082F70",
+  50: "#003C86",
+  60: "#004998",
+  70: "#0C57A8",
+  80: "#1E66B6",
+  90: "#2E74C3",
+  100: "#3F83CE",
+  110: "#5092D8",
+  120: "#63A1E1",
+  130: "#77B0E9",
+  140: "#8CBFEF",
+  150: "#A3CDF4",
+  160: "#BBDCF9",
 };
 
 const v9CustomColors = {
