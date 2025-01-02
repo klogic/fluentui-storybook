@@ -1,4 +1,4 @@
-import { IColumn, ShimmeredDetailsList } from "@fluentui/react";
+import { DetailsListLayoutMode, IColumn, SelectionMode, ShimmeredDetailsList } from "@fluentui/react";
 import {
   createTableColumn,
   DataGrid,
@@ -129,6 +129,8 @@ export const DetailsListLoading = () => {
       v8Component={
         <ShimmeredDetailsList
           enableShimmer={loading}
+          selectionMode={SelectionMode.none}
+          layoutMode={DetailsListLayoutMode.justified}
           items={items}
           columns={v8Columns}
         />
@@ -286,6 +288,8 @@ export const DetailsList = () => {
       v8Component={
         <ShimmeredDetailsList
           enableShimmer={loading}
+          selectionMode={SelectionMode.none}
+          layoutMode={DetailsListLayoutMode.justified}
           items={items}
           columns={v8Columns}
         />
