@@ -1,4 +1,9 @@
-import { DetailsListLayoutMode, IColumn, SelectionMode, ShimmeredDetailsList } from "@fluentui/react";
+import {
+  DetailsListLayoutMode,
+  IColumn,
+  SelectionMode,
+  ShimmeredDetailsList,
+} from "@fluentui/react";
 import {
   createTableColumn,
   DataGrid,
@@ -38,6 +43,9 @@ const formatOptionalDate = (date?: Date) =>
 const useStyles = makeStyles({
   shimmerRow: { display: "flex" },
   shimmerItem: { margin: "1.125rem 0.5rem" },
+  tableBody: {
+    fontSize: "x-small",
+  },
 });
 
 const DataGridSkeleton: FC<{ rows?: number }> = ({ rows = 10 }) => {
@@ -163,6 +171,8 @@ export const DetailsListLoading = () => {
   );
 };
 export const DetailsList = () => {
+  const styles = useStyles();
+
   const v8Columns: IColumn[] = [
     {
       key: "name",
@@ -295,7 +305,7 @@ export const DetailsList = () => {
         />
       }
       v9Component={
-        <DataGrid items={items} columns={v9Columns} size="medium">
+        <DataGrid items={items} columns={v9Columns}>
           <DataGridHeader>
             <DataGridRow>
               {({ renderHeaderCell }) => (
@@ -310,7 +320,9 @@ export const DetailsList = () => {
               {({ item, rowId }) => (
                 <DataGridRow<ListItem> key={rowId}>
                   {({ renderCell }) => (
-                    <DataGridCell>{renderCell(item)}</DataGridCell>
+                    <DataGridCell className={styles.tableBody}>
+                      {renderCell(item)}
+                    </DataGridCell>
                   )}
                 </DataGridRow>
               )}
