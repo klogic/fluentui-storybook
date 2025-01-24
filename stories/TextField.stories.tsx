@@ -1,12 +1,8 @@
 import { TextField as V8TextField } from "@fluentui/react";
 import {
+  Field,
   Input,
-  Label,
-  makeStyles,
-  shorthands,
-  Text,
   tokens,
-  useId,
   Button as V9Button,
 } from "@fluentui/react-components";
 import { EyeFilled } from "@fluentui/react-icons";
@@ -20,25 +16,8 @@ const meta: Meta = {
 };
 export default meta;
 
-const useStyles = makeStyles({
-  column: {
-    display: "flex",
-    flexDirection: "column",
-  },
-  error: {
-    color: tokens.colorPaletteRedForeground1,
-  },
-  inputError: {
-    ...shorthands.borderColor(tokens.colorPaletteRedForeground1),
-  },
-});
-
 //#region Stories
 export const TextField = () => {
-  const styles = useStyles();
-  const passwordFieldId = useId("password");
-  const passwordFieldErrorId = useId("password-error");
-
   function handleKey(event: React.KeyboardEvent<HTMLInputElement>) {
     const capsLock = event.getModifierState("CapsLock");
     console.log("🚀 ~ handleKey ~ capsLock:", capsLock);
@@ -87,14 +66,11 @@ export const TextField = () => {
         />
       }
       v9Component={
-        <div className={styles.column}>
-          <Label htmlFor={passwordFieldId} size="large">
-            {"Aktuelles Passwort"}
-          </Label>
+        <Field
+          label={"Aktuelles Passwort"}
+          validationMessage={"Bitte Passwort eingeben"}
+        >
           <Input
-            id={passwordFieldId}
-            className={styles.inputError}
-            aria-describedby={passwordFieldErrorId}
             type="password"
             onKeyDown={handleKey}
             onKeyUp={handleKey}
@@ -107,10 +83,7 @@ export const TextField = () => {
               />
             }
           />
-          <Text id={passwordFieldErrorId} className={styles.error}>
-            {"Bitte Passwort eingeben"}
-          </Text>
-        </div>
+        </Field>
       }
     />
   );
