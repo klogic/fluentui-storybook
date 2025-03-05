@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
 
 import { BadgeComponent } from "./Badge";
 import { Badge } from "@fluentui/react-components";
@@ -16,14 +15,61 @@ const meta = {
   tags: ["autodocs"],
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
-    backgroundColor: { control: "color" },
+    size: {
+        control: 'select',
+        options: ['tiny', 'extra-small', 'small', 'medium', 'large', 'extra-large'],
+        description: 'Select the Badge size',
+      },
+    color: {
+        control: 'select',
+        options: ['brand', 'danger', 'important', 'informative', 'severe', 'subtle', 'success', 'warning'],
+        description: 'Select the Badge color',
+      }
   },
-  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
-  args: { onClick: fn() },
+  args:{
+    size: "extra-large",
+    color: "warning"
+  }
 } satisfies Meta<typeof BadgeComponent>;
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+
+// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
+export const Tiny: Story = {
+  args: {
+    size: "tiny",
+  },
+};
+
+export const ExtraSmall: Story = {
+  args: {
+    size: "extra-small",
+  },
+};
+
+export const Small: Story = {
+  args: {
+    size: "small",
+  },
+};
+
+export const Medium: Story = {
+  args: {
+    size: "medium",
+  },
+};
+export const Large: Story = {
+  args: {
+    size: "large",
+  },
+};
+
+export const ExtraLarge: Story = {
+  args: {
+    size: "extra-large",
+  },
+};
+
+
 
 export const All = () => {
   return (
@@ -37,32 +83,5 @@ export const All = () => {
     </div>
   );
 };
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Primary: Story = {
-  args: {
-    primary: true,
-    size: "small",
-    label: "Badge",
-  },
-};
-
-export const Secondary: Story = {
-  args: {
-    label: "Badge",
-    size: "medium",
-  },
-};
-
-export const Large: Story = {
-  args: {
-    size: "large",
-    label: "Badge",
-  },
-};
-
-export const Small: Story = {
-  args: {
-    size: "small",
-    label: "Badge",
-  },
-};
+export default meta;
+type Story = StoryObj<typeof meta>;
