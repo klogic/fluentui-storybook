@@ -6,7 +6,7 @@ import { CompareGrid } from "./CompareGrid";
 
 // Meta configuration
 const meta: Meta = {
-  title: "FluentUI",
+  title: "Example/FluentUI",
   component: () => <div />, // Placeholder, not used directly
 };
 export default meta;

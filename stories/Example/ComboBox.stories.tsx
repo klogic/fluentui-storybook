@@ -2,14 +2,14 @@ import { IComboBoxOption, ComboBox as V8ComboBox } from "@fluentui/react";
 import {
   Field,
   Option,
-  Combobox as V9ComboBox
+  Combobox as V9ComboBox,
 } from "@fluentui/react-components";
 import { Meta } from "@storybook/react";
 import { CompareGrid } from "./CompareGrid";
 
 // Meta configuration
 const meta: Meta = {
-  title: "FluentUI",
+  title: "Example/FluentUI",
   component: () => <div />, // Placeholder, not used directly
 };
 export default meta;

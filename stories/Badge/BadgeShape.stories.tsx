@@ -1,12 +1,16 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { BadgeComponent } from "./Badge";
+import { BadgeShapeComponent } from "./BadgeShape";
 import { Badge } from "@fluentui/react-components";
-
+import {
+  CalendarLtrRegular,
+  SearchFilled,
+  Accessibility16Regular,
+} from "@fluentui/react-icons";
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: "Example/Badge",
-  component: BadgeComponent,
+  title: "FluentUI/Badge/BadgeShape",
+  component: BadgeShapeComponent,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: "centered",
@@ -16,22 +20,44 @@ const meta = {
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
     size: {
-        control: 'select',
-        options: ['tiny', 'extra-small', 'small', 'medium', 'large', 'extra-large'],
-        description: 'Select the Badge size',
-      },
+      control: "select",
+      options: [
+        "tiny",
+        "extra-small",
+        "small",
+        "medium",
+        "large",
+        "extra-large",
+      ],
+      description: "Select the Badge size",
+    },
     color: {
-        control: 'select',
-        options: ['brand', 'danger', 'important', 'informative', 'severe', 'subtle', 'success', 'warning'],
-        description: 'Select the Badge color',
-      }
+      control: "select",
+      options: [
+        "brand",
+        "danger",
+        "important",
+        "informative",
+        "severe",
+        "subtle",
+        "success",
+        "warning",
+      ],
+      description: "Select the Badge color",
+    },
+    shape: {
+      control: "select",
+      options: ["square", "rounded", "circular"],
+      description: "Select the Badge sharp",
+    },
   },
-  args:{
-    size: "extra-large",
-    color: "warning"
-  }
-} satisfies Meta<typeof BadgeComponent>;
-
+  args: {
+    size: "medium",
+    color: "warning",
+    shape: "circular",
+    appearance: "filled",
+  },
+} satisfies Meta<typeof BadgeShapeComponent>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Tiny: Story = {
@@ -69,8 +95,6 @@ export const ExtraLarge: Story = {
   },
 };
 
-
-
 export const All = () => {
   return (
     <div>
@@ -83,5 +107,13 @@ export const All = () => {
     </div>
   );
 };
+
+// export const Icon = () => {
+//   return (
+//     <div>
+//       <Badge icon={<Accessibility16Regular />}></Badge>
+//     </div>
+//   );
+// };
 export default meta;
 type Story = StoryObj<typeof meta>;

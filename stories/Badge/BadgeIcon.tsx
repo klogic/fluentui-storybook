@@ -6,10 +6,13 @@ import { Badge } from "@fluentui/react-components";
 import type { BadgeProps } from "@fluentui/react-components";
 
 /** Primary UI component for user interaction */
-export const BadgeComponent = ({ ...props }: BadgeProps) => {
+export interface BadgePropsText extends BadgeProps {
+  text?: string;
+}
+export const BadgeIconComponent = ({ ...props }: BadgePropsText) => {
   return (
     <div>
-      <Badge {...props}></Badge>
+      <Badge {...props}>{props.text}</Badge>
     </div>
   );
 };

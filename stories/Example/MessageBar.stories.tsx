@@ -5,14 +5,14 @@ import {
 import {
   MessageBarBody,
   MessageBarTitle,
-  MessageBar as V9MessageBar
+  MessageBar as V9MessageBar,
 } from "@fluentui/react-components";
 import { Meta } from "@storybook/react";
 import { CompareGrid } from "./CompareGrid";
 
 // Meta configuration
 const meta: Meta = {
-  title: "FluentUI",
+  title: "Example/FluentUI",
   component: () => <div />, // Placeholder, not used directly
 };
 export default meta;
