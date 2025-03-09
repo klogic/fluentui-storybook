@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { BadgePropsText, BadgeTextComponent } from "./BadgeText";
-import { Badge } from "@fluentui/react-components";
+import { CounterBadge, CounterBadgeProps } from "@fluentui/react-components";
 import {
   CalendarLtrRegular,
   SearchFilled,
@@ -12,18 +12,19 @@ import {
   Accessibility32Regular,
   Accessibility48Regular,
 } from "@fluentui/react-icons";
+import { BadgeCounterComponent } from "./BadgeCounter";
 ("@fluentui/react-icons");
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: "FluentUI/Badge/Badge/BadgeText",
-  component: BadgeTextComponent,
+  title: "FluentUI/Badge/CounterBadge/BadgeCounterNumber",
+  component: BadgeCounterComponent,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: "centered",
     docs: {
       description: {
         component:
-          "https://react.fluentui.dev/?path=/docs/components-badge-badge--docs",
+          "https://react.fluentui.dev/?path=/docs/components-badge-counter-badge--docs",
       },
     },
   },
@@ -41,44 +42,55 @@ const meta = {
         "large",
         "extra-large",
       ],
-      description: "Select the Badge size",
-      table: {
-        defaultValue: { summary: "small" },
-      },
+      description: "A Badge can be on of several preset sizes.",
     },
     color: {
       control: "select",
-      options: [
-        "brand",
-        "danger",
-        "important",
-        "informative",
-        "severe",
-        "subtle",
-        "success",
-        "warning",
-      ],
-      description: "Select the Badge color",
+      options: ["brand", "danger", "important", "informative"],
+      description: "Semantic colors for a counter badge",
       table: {
         defaultValue: { summary: "brand" },
       },
     },
     shape: {
       control: "select",
-      options: ["square", "rounded", "circular"],
-      description: "Select the Badge sharp",
+      options: ["rounded", "circular"],
+      description: "A Badge can be circular or rounded",
       table: {
         defaultValue: { summary: "circular" },
       },
     },
-    text: {},
     appearance: {
       table: {
         defaultValue: { summary: "filled" },
       },
       control: "select",
-      options: ["filled", "ghost", "outline", "tint"],
-      description: "Select the Badge sharp",
+      options: ["filled", "ghost"],
+      description:
+        "A Badge can have different appearances that emphasize certain parts of it",
+    },
+    count: {
+      table: {
+        defaultValue: { summary: "0" },
+      },
+    },
+    dot: {
+      table: {
+        defaultValue: { summary: "false" },
+      },
+      description: "If a dot should be displayed without the count",
+    },
+    overflowCount: {
+      table: {
+        defaultValue: { summary: "99" },
+      },
+      description: "Max number to be displayed",
+    },
+    showZero: {
+      table: {
+        defaultValue: { summary: "false" },
+      },
+      description: "If the badge should be shown when count is 0",
     },
   },
   args: {
@@ -86,8 +98,11 @@ const meta = {
     color: "brand",
     shape: "circular",
     appearance: "filled",
+    count: 0,
+    dot: false,
+    showZero: false,
   },
-} satisfies Meta<BadgePropsText>;
+} satisfies Meta<CounterBadgeProps>;
 
 export const Default: Story = {
   args: {
@@ -95,62 +110,69 @@ export const Default: Story = {
     appearance: "filled",
     color: "brand",
     shape: "circular",
-    text: "999+",
+    count: 0,
+    overflowCount: 99,
   },
 };
 export const Tiny = {
   args: {
     size: "tiny",
-    text: "999+",
+    count: 0,
+    showZero: true,
   },
 };
 
 export const ExtraSmall: Story = {
   args: {
     size: "extra-small",
-    text: "999+",
+    count: 0,
+    showZero: true,
   },
 };
 
 export const Small: Story = {
   args: {
     size: "small",
-    text: "999+",
+    count: 0,
+    showZero: true,
   },
 };
 
 export const Medium: Story = {
   args: {
     size: "medium",
-    text: "999+",
+    count: 0,
+    showZero: true,
   },
 };
 export const Large: Story = {
   args: {
     size: "large",
-    text: "999+",
+    count: 0,
+    showZero: true,
   },
 };
 
 export const ExtraLarge: Story = {
   args: {
     size: "extra-large",
-    text: "999+",
+    count: 0,
+    showZero: true,
   },
 };
 
-// export const IconWithSize = () => {
-//   return (
-//     <div>
-//       <Badge icon={<Accessibility16Regular />} size="tiny"></Badge>
-//       <Badge icon={<Accessibility16Regular />} size="extra-small"></Badge>
-//       <Badge icon={<Accessibility16Regular />} size="small"></Badge>
-//       <Badge icon={<Accessibility16Regular />} size="medium"></Badge>
-//       <Badge icon={<Accessibility16Regular />} size="large"></Badge>
-//       <Badge icon={<Accessibility16Regular />} size="extra-large"></Badge>
-//     </div>
-//   );
-// };
+export const CounterSize = () => {
+  return (
+    <div>
+      <CounterBadge count={0} showZero={true} size="tiny"></CounterBadge>
+      <CounterBadge count={0} showZero={true} size="extra-small"></CounterBadge>
+      <CounterBadge count={0} showZero={true} size="small"></CounterBadge>
+      <CounterBadge count={0} showZero={true} size="medium"></CounterBadge>
+      <CounterBadge count={0} showZero={true} size="large"></CounterBadge>
+      <CounterBadge count={0} showZero={true} size="extra-large"></CounterBadge>
+    </div>
+  );
+};
 
 // export const IconRegular = () => {
 //   return (

@@ -9,11 +9,17 @@ import {
 } from "@fluentui/react-icons";
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: "FluentUI/Badge/BadgeShape",
+  title: "FluentUI/Badge/Badge/BadgeShape",
   component: BadgeShapeComponent,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: "centered",
+    docs: {
+      description: {
+        component:
+          "https://react.fluentui.dev/?path=/docs/components-badge-badge--docs",
+      },
+    },
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
@@ -29,6 +35,9 @@ const meta = {
         "large",
         "extra-large",
       ],
+      table: {
+        defaultValue: { summary: "small" },
+      },
       description: "Select the Badge size",
     },
     color: {
@@ -43,23 +52,47 @@ const meta = {
         "success",
         "warning",
       ],
+      table: {
+        defaultValue: { summary: "brand" },
+      },
       description: "Select the Badge color",
     },
     shape: {
       control: "select",
       options: ["square", "rounded", "circular"],
       description: "Select the Badge sharp",
+      table: {
+        defaultValue: { summary: "circular" },
+      },
+    },
+    appearance: {
+      table: {
+        defaultValue: { summary: "filled" },
+      },
+      control: "select",
+      options: ["filled", "ghost", "outline", "tint"],
+      description: "Select the Badge sharp",
     },
   },
   args: {
     size: "medium",
-    color: "warning",
+    color: "brand",
     shape: "circular",
     appearance: "filled",
   },
 } satisfies Meta<typeof BadgeShapeComponent>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
+
+export const Default: Story = {
+  args: {
+    size: "small",
+    appearance: "filled",
+    color: "brand",
+    shape: "circular",
+  },
+};
+
 export const Tiny: Story = {
   args: {
     size: "tiny",
