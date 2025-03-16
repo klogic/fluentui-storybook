@@ -1,4 +1,3 @@
-
 import "./TagPicker.module.css";
 
 import * as React from "react";
@@ -40,7 +39,7 @@ import { People20Regular } from "@fluentui/react-icons";
 export interface BadgePropsText extends BadgeProps {
   text?: string;
 }
-const options  = [
+const options = [
   "John Doe",
   "Jane Doe",
   "Max Mustermann",
@@ -51,7 +50,7 @@ const options  = [
   "Maria Rossi",
 ];
 
-export const TagPickerComponent = ({ ...props }: BadgePropsText) => {
+export const TagPickerComponent = ({ ...props }: TagPickerProps) => {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const onOptionSelect: TagPickerProps["onOptionSelect"] = (e, data) => {
     if (data.value === "no-options") {
@@ -59,63 +58,46 @@ export const TagPickerComponent = ({ ...props }: BadgePropsText) => {
     }
     setSelectedOptions(data.selectedOptions);
   };
-  const tagPickerOptions = options.filter(
-    (option) => !selectedOptions.includes(option)
-  );
+  const tagPickerOptions = options.filter((option) => !selectedOptions.includes(option));
 
   return (
     <FluentProvider theme={teamsLightTheme}>
       <Field label="Select Employees" style={{ maxWidth: 400 }}>
-      <TagPicker
-        onOptionSelect={onOptionSelect}
-        selectedOptions={selectedOptions}
-        size="large"
-      >
-        <TagPickerControl expandIcon={""}>
-          <TagPickerGroup aria-label="Selected Employees">
-            {selectedOptions.map((option) => (
-              <Tag
-                key={option}
-                shape="circular"
-                media={<Avatar aria-hidden name={option} color="colorful" />}
-                value={option}
-                dismissible
-                dismissIcon={{ "aria-label" : "remove"}}
-              >
-                {option}
-              </Tag>
-            ))}
-          </TagPickerGroup>
-          <TagPickerInput aria-label="Select Employees" />
-        </TagPickerControl>
-        <TagPickerList>
-          {tagPickerOptions.length > 0 ? (
-            tagPickerOptions.map((option) => (
-              <TagPickerOption
-                media={
-                  <Avatar
-                    shape="square"
-                    aria-hidden
-                    name={option}
-                    color="colorful"
-                  />
-                }
-                value={option}
-                key={option}
-              >
-                {option}
-              </TagPickerOption>
-            ))
-          ) : (
-            <TagPickerOption value="no-options">
-              No options available
-            </TagPickerOption>
-          )}
-        </TagPickerList>
-      </TagPicker>
-    </Field>
+        <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions} {...props}>
+          <TagPickerControl expandIcon={""}>
+            <TagPickerGroup aria-label="Selected Employees">
+              {selectedOptions.map((option) => (
+                <Tag
+                  key={option}
+                  shape="circular"
+                  media={<Avatar aria-hidden name={option} color="colorful" />}
+                  value={option}
+                  dismissible
+                  dismissIcon={{ "aria-label": "remove" }}
+                >
+                  {option}
+                </Tag>
+              ))}
+            </TagPickerGroup>
+            <TagPickerInput aria-label="Select Employees" />
+          </TagPickerControl>
+          <TagPickerList>
+            {tagPickerOptions.length > 0 ? (
+              tagPickerOptions.map((option) => (
+                <TagPickerOption
+                  media={<Avatar shape="square" aria-hidden name={option} color="colorful" />}
+                  value={option}
+                  key={option}
+                >
+                  {option}
+                </TagPickerOption>
+              ))
+            ) : (
+              <TagPickerOption value="no-options">No options available</TagPickerOption>
+            )}
+          </TagPickerList>
+        </TagPicker>
+      </Field>
     </FluentProvider>
   );
 };
-
-

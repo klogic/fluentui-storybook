@@ -1,121 +1,74 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import {  BadgePropsText, TagPickerComponent } from "./TagPicker";
-import { Badge } from "@fluentui/react-components";
-import {
-  CalendarLtrRegular,
-  SearchFilled,
-  Accessibility16Regular,
-  Accessibility20Regular,
-  Accessibility24Regular,
-  Accessibility28Regular,
-  Accessibility32Regular,
-  Accessibility48Regular,
-} from "@fluentui/react-icons";
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
+import { TagPickerComponent } from "./TagPicker";
+import { TagPickerProps } from "@fluentui/react-components";
 const meta = {
-  title: "TagPicker/TagPicker",
+  title: "FluentUI/TagPicker/TagPicker",
   component: TagPickerComponent,
   parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: "centered",
     docs: {
       description: {
-        component:
-          "https://react.fluentui.dev/?path=/docs/components-badge-badge--docs",
+        component: "https://react.fluentui.dev/?path=/docs/components-tagpicker--docs",
       },
     },
   },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
-  // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
+    positioning: {
+      control: "select",
+      options: [
+        "above",
+        "above-start",
+        "above-end",
+        "below",
+        "below-start",
+        "below-end",
+        "before",
+        "before-top",
+        "before-bottom",
+        "after",
+        "after-top",
+        "after-bottom",
+      ],
+      description:
+        "Configure the positioning of the combobox dropdown. Please refer to the positioning documentation for more details.",
+    },
     size: {
-      control: "select",
-      options: [
-        "tiny",
-        "extra-small",
-        "small",
-        "medium",
-        "large",
-        "extra-large",
-      ],
-      description: "Select the Badge size",
       table: {
-        defaultValue: { summary: "small" },
+        defaultValue: { summary: "medium" },
       },
-    },
-    color: {
       control: "select",
-      options: [
-        "brand",
-        "danger",
-        "important",
-        "informative",
-        "severe",
-        "subtle",
-        "success",
-        "warning",
-      ],
-      description: "Select the Badge color",
-      table: {
-        defaultValue: { summary: "brand" },
-      },
+      options: ["medium", "large", "extra-large"],
+      description: "Controls the colors and borders of the combobox trigger",
     },
-    shape: {
-      control: "select",
-      options: ["square", "rounded", "circular"],
-      description: "Select the Badge sharp",
-      table: {
-        defaultValue: { summary: "circular" },
-      },
-    },
-    text: {},
     appearance: {
       table: {
-        defaultValue: { summary: "filled" },
+        defaultValue: { summary: "outline" },
       },
       control: "select",
-      options: ["filled", "ghost", "outline", "tint"],
-      description: "Select the Badge sharp",
+      options: ["outline", "underline", "filled-darker", "filled-lighter"],
+      description: "Controls the colors and borders of the combobox trigger.",
+    },
+    noPopover: {
+      table: {
+        defaultValue: { summary: "false" },
+      },
+      control: "boolean",
+      description:
+        "By default, when a single children is provided, the TagPicker will assume that the children is a popover. By setting this prop to true, the children will be treated as a trigger instead.",
+    },
+    disabled: {
+      table: {
+        defaultValue: { summary: "false" },
+      },
+      control: "boolean",
     },
   },
-  args: {
-    size: "medium",
-    color: "brand",
-    shape: "circular",
-    appearance: "filled",
-  },
-} satisfies Meta<BadgePropsText>;
-
+  args: { noPopover: false, appearance: "outline", size: "medium", disabled: false },
+} satisfies Meta<TagPickerProps>;
 export const Default: Story = {
-  args: {
-  },
+  args: { noPopover: false, appearance: "outline", size: "medium", disabled: false },
 };
-// export const IconWithSize = () => {
-//   return (
-//     <div>
-//       <Badge icon={<Accessibility16Regular />} size="tiny"></Badge>
-//       <Badge icon={<Accessibility16Regular />} size="extra-small"></Badge>
-//       <Badge icon={<Accessibility16Regular />} size="small"></Badge>
-//       <Badge icon={<Accessibility16Regular />} size="medium"></Badge>
-//       <Badge icon={<Accessibility16Regular />} size="large"></Badge>
-//       <Badge icon={<Accessibility16Regular />} size="extra-large"></Badge>
-//     </div>
-//   );
-// };
-
-// export const IconRegular = () => {
-//   return (
-//     <div>
-//       <Badge icon={<Accessibility16Regular />}></Badge>
-//       <Badge icon={<Accessibility20Regular />}></Badge>
-//       <Badge icon={<Accessibility24Regular />}></Badge>
-//       <Badge icon={<Accessibility28Regular />}></Badge>
-//       <Badge icon={<Accessibility32Regular />}></Badge>
-//       <Badge icon={<Accessibility48Regular />}></Badge>
-//     </div>
-//   );
-// };
 export default meta;
 type Story = StoryObj<typeof meta>;
